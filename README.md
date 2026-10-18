@@ -11,6 +11,16 @@ Está pensado para:
 
 ---
 
+## 🔗 Enlaces en vivo
+
+- **Repositorio GitHub:** https://github.com/amarmurmu001/calculadoras-peru
+- **Sitio desplegado en Vercel:** https://calculadoras-peru-murex.vercel.app
+
+> El proyecto de Vercel está conectado al repositorio: cada `git push` a `main` genera un despliegue automático.
+> Cuando compres tu dominio propio, agrégalo en **Vercel → Settings → Domains** y reemplaza el dominio de ejemplo `calculadoras-peru.pe` en el código (ver más abajo).
+
+---
+
 ## 📁 Estructura del proyecto
 
 ```
