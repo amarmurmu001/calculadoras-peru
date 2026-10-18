@@ -1,0 +1,19 @@
+# robots.txt — Calculadoras Perú
+# Reemplaza el dominio si publicas en otro sitio.
+
+User-agent: *
+Allow: /
+Disallow: /assets/js/config.local.js
+
+# Rastreadores publicitarios (Google AdSense) — permitidos explícitamente
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+# Sitemap
+Sitemap: https://calculadoras-peru.pe/sitemap.xml

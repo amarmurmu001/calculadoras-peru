@@ -1,0 +1,28 @@
+{
+  "name": "Calculadoras Laborales Perú",
+  "short_name": "Calc. Perú",
+  "description": "Calculadoras laborales gratuitas del Perú: sueldo neto, CTS, AFP, gratificación, renta de 5ta categoría, liquidación y más.",
+  "lang": "es-PE",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#c8102e",
+  "categories": ["finance", "business", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

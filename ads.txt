@@ -1,0 +1,6 @@
+# ads.txt — Calculadoras Perú
+# Autoriza a Google AdSense a vender inventario publicitario de este dominio.
+# Formato: <dominio>, <ID de editor sin "ca-">, <relación>, <certification-authority-id>
+# Reemplaza pub-0000000000000000 por tu ID de editor real (Google AdSense → Cuenta → Información de la cuenta).
+
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

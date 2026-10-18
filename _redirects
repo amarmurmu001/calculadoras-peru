@@ -1,0 +1,3 @@
+# Redirecciones (Netlify / Cloudflare Pages)
+/index.html        /        301
+/blog/index.html   /blog/   301
