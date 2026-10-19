@@ -16,4 +16,4 @@ User-agent: AdsBot-Google-Mobile
 Allow: /
 
 # Sitemap
-Sitemap: https://calculadoras-peru.pe/sitemap.xml
+Sitemap: https://calculadoras-peru-murex.vercel.app/sitemap.xml

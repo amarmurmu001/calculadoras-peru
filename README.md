@@ -17,7 +17,7 @@ Está pensado para:
 - **Sitio desplegado en Vercel:** https://calculadoras-peru-murex.vercel.app
 
 > El proyecto de Vercel está conectado al repositorio: cada `git push` a `main` genera un despliegue automático.
-> Cuando compres tu dominio propio, agrégalo en **Vercel → Settings → Domains** y reemplaza el dominio de ejemplo `calculadoras-peru.pe` en el código (ver más abajo).
+> El dominio actual del sitio es `https://calculadoras-peru-murex.vercel.app` y es el que usan los canónicos, `sitemap.xml`, `robots.txt` y los datos estructurados. Cuando compres un dominio propio, agrégalo en **Vercel → Settings → Domains** y reemplaza el dominio actual en el código (ver más abajo).
 
 ---
 
@@ -139,7 +139,7 @@ git push -u origin main
    - **Build Command:** *(vacío)*
    - **Output Directory:** *(vacío / `.`)*
    - **Root Directory:** `./` (déjalo así **si subiste el contenido** de la carpeta; cámbialo a `calculadoras-peru` solo si subiste la carpeta como subnivel).
-4. **Deploy**. En ~20 segundos tendrás una URL tipo `https://calculadoras-peru.vercel.app`.
+4. **Deploy**. En ~20 segundos tendrás una URL tipo `https://TU-PROYECTO.vercel.app`.
 5. (Opcional) **Settings → Domains** → agrega tu dominio propio (p. ej. `calculadoras-peru.pe`).
 
 `vercel.json` ya incluye encabezados de caché/seguridad, redirecciones de `index.html` y usa `404.html` como página de error personalizada.
@@ -179,27 +179,32 @@ Puedes subir la carpeta `calculadoras-peru/` completa. No hay proceso de compila
 
 ---
 
-## ✏️ Paso obligatorio: reemplazar el dominio de ejemplo
+## 🔁 Cambiar el dominio (migración)
 
-Todo el sitio usa el dominio de ejemplo **`https://calculadoras-peru.pe`**. Debes cambiarlo por el tuyo real en:
+El sitio completo usa el dominio actual **`https://calculadoras-peru-murex.vercel.app`** en:
 
 - Etiquetas `<link rel="canonical">`, `og:url`, `twitter:*` y datos estructurados JSON-LD (en **todas** las páginas HTML).
-- `sitemap.xml` (campo `<loc>`).
+- `sitemap.xml` (campo `<loc>` y `lastmod`).
 - `robots.txt` (línea `Sitemap:`).
 
-**Reemplazo masivo** (desde la carpeta `calculadoras-peru`):
+Si algún día conectas un dominio propio (por ejemplo `calculadoras-peru.pe`), reemplázalo en todos los archivos y actualiza `sitemap.xml` y `robots.txt`:
+
+```bash
+# Ejecutar desde la raíz del proyecto (Linux/macOS/Git Bash)
+grep -rl 'calculadoras-peru-murex.vercel.app' . --exclude-dir=.git \
+  | xargs sed -i 's/calculadoras-peru-murex\.vercel\.app/TU-DOMINIO.pe/g'
+```
 
 ```powershell
-# Previsualizar qué archivos cambiarían
-Get-ChildItem -Recurse -Include *.html,*.xml,*.txt |
-  Select-String -Pattern "calculadoras-peru\.pe" -List | Select-Object Path
-
-# Reemplazar en todos los archivos (ajusta TU-DOMINIO.pe)
-Get-ChildItem -Recurse -Include *.html,*.xml,*.txt | ForEach-Object {
-  (Get-Content $_.FullName -Raw) -replace "calculadoras-peru\.pe", "TU-DOMINIO.pe" |
-    Set-Content $_.FullName -NoNewline -Encoding utf8
-}
+# Windows PowerShell
+Get-ChildItem -Recurse -Include *.html,*.xml,*.txt,*.md |
+  ForEach-Object {
+    (Get-Content $_.FullName -Raw) -replace 'calculadoras-peru-murex\.vercel\.app', 'TU-DOMINIO.pe' |
+      Set-Content $_.FullName -NoNewline -Encoding utf8
+  }
 ```
+
+Después de cambiar de dominio: agrega el nuevo dominio en Vercel, redirige el anterior con una regla 301 en `vercel.json` y vuelve a enviar el sitemap en Google Search Console.
 
 ---
 
@@ -231,7 +236,7 @@ Edita `ads.txt` y reemplaza `pub-0000000000000000` por tu ID de editor **sin** e
 google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0
 ```
 
-Publica `ads.txt` en la **raíz del dominio** (ya está ahí). Verifícalo luego en `https://TU-DOMINIO.pe/ads.txt`.
+Publica `ads.txt` en la **raíz del dominio** (ya está ahí). Verifícalo luego en `https://calculadoras-peru-murex.vercel.app/ads.txt`.
 
 ### 3. Solicita la aprobación
 
@@ -249,7 +254,7 @@ Si recibes visitas de la UE/Reino Unido, activa un **mensaje de consentimiento**
 ## 🔍 Checklist SEO (Google, primera página)
 
 1. **Google Search Console** → agrega tu dominio → verifica la propiedad.
-2. Envía el sitemap: `https://TU-DOMINIO.pe/sitemap.xml`.
+2. Envía el sitemap: `https://calculadoras-peru-murex.vercel.app/sitemap.xml`.
 3. Revisa *Cobertura* hasta que todas las URLs estén "Válidas".
 4. **Bing Webmaster Tools** (opcional pero gratis) → mismo sitemap.
 5. **Google Analytics 4** (opcional): añade la etiqueta `<script>` antes de `</head>` en todas las páginas.
@@ -263,7 +268,7 @@ Si recibes visitas de la UE/Reino Unido, activa un **mensaje de consentimiento**
 - HTML semántico, `lang="es-PE"`, diseño móvil, sin dependencias externas (rápido).
 
 **Pendiente recomendado:**
-- Añade `og-image.png` (1200×630 px) en la raíz para previsualizaciones al compartir.
+- Personaliza `og-image.png` (1200×630 px, ya incluida en la raíz) con tu marca si lo deseas.
 - Consigue algunos enlaces entrantes (directorios, foros, prensa) para ganar autoridad.
 
 ---
@@ -305,11 +310,11 @@ Recuerda actualizar el **año en los títulos** (`... 2026`) cuando cambie.
 
 ## ✅ Puesta en marcha (resumen)
 
-1. [ ] Reemplazar `calculadoras-peru.pe` por tu dominio real.
+1. [ ] Confirmar que el dominio de los canónicos coincide con el dominio final (hoy `calculadoras-peru-murex.vercel.app`).
 2. [ ] Completar tus datos en `politica-de-privacidad.html`, `terminos-y-condiciones.html` y `sobre-nosotros.html`.
-3. [ ] Añadir `og-image.png` (1200×630) en la raíz.
-4. [ ] Publicar en Cloudflare Pages / Netlify / GitHub Pages.
+3. [ ] Reemplazar `pub-0000000000000000` en `ads.txt` y `PE_ADS` en `assets/js/ui.js` con tu ID de AdSense.
+4. [ ] Publicar (Vercel ya está conectado; también sirve Cloudflare Pages / Netlify / GitHub Pages).
 5. [ ] Verificar parámetros legales en `config.js`.
 6. [ ] Registrar el dominio en Google Search Console y enviar `sitemap.xml`.
-7. [ ] Configurar `ads.txt` y `PE_ADS` con tu ID de AdSense.
-8. [ ] Conectar el formulario de contacto.
+7. [ ] Conectar el formulario de contacto.
+8. [ ] (Opcional) Conectar un dominio propio y repetir la migración de dominio.
